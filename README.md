@@ -22,3 +22,23 @@
 ###### POST /api/auth/resetpassword
 
 - To reset the password of the existing User
+
+###### PUT /api/user/update
+
+- To update the existing user Details
+
+###### POST /api/product/create
+
+- To create new Product
+
+###### GET /api/product/get
+
+- To fetch all the Products
+
+###### DELETE /api/product/delete/:id
+
+- To delete the product using ID
+
+###### DELETE /api/product/category/delete/:category
+
+- To delete the all Product based perticular category
