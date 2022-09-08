@@ -17,6 +17,7 @@ router.post(
     }),
   ],
   async (req, res) => {
+    console.log(req.body);
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
@@ -120,9 +121,7 @@ router.put(
           .status(400)
           .json({ errors: "please give same password in New and Confirm" });
       }
-      // console.log("hellow");
       const user = await User.findById(req.user.id);
-      // console.log(user);
       const comparePass = await bcrypt.compare(currentPass, user.password);
 
       if (!comparePass) {
@@ -136,12 +135,19 @@ router.put(
         { password: newPassword },
         { new: true }
       );
-      res.json({ success: "password successfully changed" });
+      data = {
+        user: {
+          id: req.user.id,
+        },
+      };
+      const authToken = jwt.sign(data, "" + process.env.JWT_SECRET);
+      res.json({
+        success: "password successfully changed",
+        "auth-token": authToken,
+      });
     } catch (error) {
       res.status(500).send("Internal server Error");
     }
-
-    // let user = await User.findOne({});
   }
 );
 

@@ -1,6 +1,6 @@
 # Inventory Management CRUD API with Logging
 
-- It is a CRUD API project with Tech Stack of `Node.js` `MongoDB` and `Express` based on MVC Architecture
+- It is a CRUD API project with Tech Stack of `Node.js` `MongoDB` and `Express`
 - It can perform all the basic databse operation like `Creat` `Read` `Update` and `Delete`
 - we can pass the query params in the API to delete the Product
 
