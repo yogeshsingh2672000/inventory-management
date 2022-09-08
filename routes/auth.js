@@ -107,9 +107,7 @@ router.put(
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors) {
-      return res
-        .status(400)
-        .json({ error: "please enter the correct Credentials" });
+      return res.status(400).json({ errors: errors.array() });
     }
     const { currentPass, newPass, confirmPass } = req.body;
     try {
@@ -122,7 +120,9 @@ router.put(
           .status(400)
           .json({ errors: "please give same password in New and Confirm" });
       }
+      // console.log("hellow");
       const user = await User.findById(req.user.id);
+      // console.log(user);
       const comparePass = await bcrypt.compare(currentPass, user.password);
 
       if (!comparePass) {
@@ -131,7 +131,6 @@ router.put(
 
       const salt = await bcrypt.genSalt(10);
       const newPassword = await bcrypt.hash(newPass, salt);
-
       const updatedUser = await User.findByIdAndUpdate(
         user.id,
         { password: newPassword },

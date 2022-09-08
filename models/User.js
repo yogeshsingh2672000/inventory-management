@@ -19,7 +19,7 @@ const userSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  date: {
+  mobile: {
     type: Number,
   },
 });
