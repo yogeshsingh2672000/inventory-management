@@ -1,1 +1,24 @@
-# Employee Directory
+# Inventory Management CRUD API with Logging
+
+- It is a CRUD API project with Tech Stack of `Node.js` `MongoDB` and `Express` based on MVC Architecture
+- It can perform all the basic databse operation like `Creat` `Read` `Update` and `Delete`
+- we can pass the query params in the API to delete the Product
+
+## Setting up project
+
+- rename `.env.example` to `.env` and fill the required details
+- run `npm install` to install all the required dependencies
+
+## API Endpoint
+
+###### POST /api/auth/createuser
+
+- To create a new User
+
+###### POST /api/auth/login
+
+- To Login a existing User
+
+###### POST /api/auth/resetpassword
+
+- To reset the password of the existing User
