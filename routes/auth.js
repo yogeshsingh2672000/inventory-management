@@ -95,7 +95,7 @@ router.post(
   }
 );
 
-// Route 2: Login the existing user POST: /login
+// Route 2: Reset the password of existing user POST: /login
 router.put(
   "/resetpassword",
   [
