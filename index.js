@@ -1,16 +1,18 @@
 const express = require("express");
 const connectToMongo = require("./database/db");
 const bodyParser = require("body-parser");
+var cors = require("cors");
 
 // connecting to database
 connectToMongo();
 
 // initializing the app
 const app = express();
-const port = 3000;
+const port = 5000;
 
 // used to access the payload
 app.use(express.json());
+app.use(cors());
 
 // default route
 app.get("/", (req, res) => {
