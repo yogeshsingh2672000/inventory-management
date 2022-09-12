@@ -1,4 +1,4 @@
-# Inventory Management CRUD API with Logging
+# Inventory Management CRUD API
 
 - It is a CRUD API project with Tech Stack of `Node.js` `MongoDB` and `Express`
 - It can perform all the basic databse operation like `Creat` `Read` `Update` and `Delete`
