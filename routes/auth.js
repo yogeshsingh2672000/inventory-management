@@ -63,21 +63,26 @@ router.post(
     body("password", "Please enter the valid password").exists(),
   ],
   async (req, res) => {
+    let success = false;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      return res.status(400).json({ success, errors: errors.array() });
     }
     try {
       const { email, password } = req.body;
       let user = await User.findOne({ email });
       if (user == null) {
-        return res.status(400).json({ error: "please use valid credential" });
+        return res
+          .status(400)
+          .json({ success, error: "please use valid credential" });
       }
 
       // Comparing Pass
       const comparePass = await bcrypt.compare(password, user.password); // return true/false
       if (!comparePass) {
-        return res.status(400).json({ error: "please use valid credential" });
+        return res
+          .status(400)
+          .json({ success, error: "please use valid credential" });
       }
 
       // generating authToken
@@ -88,7 +93,8 @@ router.post(
       };
       const authToken = jwt.sign(data, "" + process.env.JWT_SECRET);
       // console.log("hello");
-      res.json({ authToken });
+      success = true;
+      res.json({ success, authToken });
     } catch (error) {
       return res.status(500).send("Internal server Error");
     }
